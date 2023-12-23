@@ -1,46 +1,44 @@
 package ru.javamentor.springboot.service;
 
 import org.springframework.stereotype.Service;
-import ru.javamentor.springboot.dao.UserDao;
+import ru.javamentor.springboot.repositories.UserRepository;
 import ru.javamentor.springboot.model.User;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private final UserDao userDao;
+    private final UserRepository userRepository;
 
-    public UserServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
-    @Transactional
     public void createUser(User user) {
-        userDao.createUser(user);
+        userRepository.save(user);
     }
+
     @Override
-    @Transactional
     public void updateUser(User user) {
-        userDao.updateUser(user);
+        userRepository.save(user);
     }
+
     @Override
     public List<User> getAllUsers() {
-        return userDao.getAllUsers();
+        return userRepository.findAll();
     }
+
     @Override
     public User readUser(Long id) {
-        return userDao.readUser(id);
+        return userRepository.findById(id).orElse(null);
     }
+
     @Override
-    @Transactional
     public User deleteUser(Long id) {
-        User user = null;
-        try {
-            user = userDao.deleteUser(id);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        User user = readUser(id);
+        if (user != null) {
+            userRepository.delete(user);
         }
         return user;
     }

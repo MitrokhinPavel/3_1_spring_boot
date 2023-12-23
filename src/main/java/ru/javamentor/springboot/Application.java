@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "ru.javamentor.springboot.dao")
+@EnableJpaRepositories(basePackages = "ru.javamentor.springboot.repositories")
 @EnableTransactionManagement
 public class Application {
 
