@@ -33,11 +33,12 @@ public class UsersController {
 		if (bindingResult.hasErrors()) {
 			return "form";
 		}
-		if (null == user.getId()) {
-			userService.createUser(user);
-		} else {
-			userService.updateUser(user);
-		}
+		userService.createUser(user);
+//		if (null == user.getId()) {
+//			userService.createUser(user);
+//		} else {
+//			userService.updateUser(user);
+//		}
 		return "redirect:/users";
 	}
 
