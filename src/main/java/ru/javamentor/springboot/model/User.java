@@ -1,5 +1,7 @@
 package ru.javamentor.springboot.model;
 
+//import javax.persistence.*;
+
 import jakarta.persistence.*;
 
 @Entity
