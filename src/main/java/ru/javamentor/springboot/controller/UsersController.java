@@ -34,11 +34,6 @@ public class UsersController {
 			return "form";
 		}
 		userService.createUser(user);
-//		if (null == user.getId()) {
-//			userService.createUser(user);
-//		} else {
-//			userService.updateUser(user);
-//		}
 		return "redirect:/users";
 	}
 
